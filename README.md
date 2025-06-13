@@ -7,13 +7,10 @@
 * dbt was built for **Linux/Mac CLI** workflows — most Windows issues disappear inside WSL.
 * It's lightweight and avoids Docker complexity.
 * Aligns with FAANG/Linux-first production environments.
+
 _Use ``wsl`` command line_
 
-## Installation Guide: Setting Up dbt in WSL2
-
-Follow these steps to get dbt up and running efficiently within your WSL2 environment.
-
-### ✅ Step 1: Enable and Install WSL2
+## ✅ Step 1: Enable and Install WSL2
 
 First, ensure WSL2 is enabled and installed on your Windows machine.
 
@@ -26,7 +23,7 @@ First, ensure WSL2 is enabled and installed on your Windows machine.
 3.  **Reboot your computer** when prompted to finalize the installation.
 4.  After rebooting, open the **Ubuntu application** from your Start menu to complete the initial setup of your Linux environment.
 
-### ✅ Step 2: Set Up Python in WSL
+## ✅ Step 2: Set Up Python in WSL
 
 Next, we'll install Python and its package manager within your Ubuntu WSL instance.
 
@@ -45,7 +42,7 @@ Next, we'll install Python and its package manager within your Ubuntu WSL instan
     pip3 --version
     ```
 
-### ✅ Step 3: Create a Virtual Environment for dbt
+## ✅ Step 3: Create a Virtual Environment for dbt
 
 It's best practice to use a virtual environment to manage dbt's dependencies, keeping them isolated from your system-wide Python installation.
 
@@ -64,7 +61,7 @@ It's best practice to use a virtual environment to manage dbt's dependencies, ke
     pip install --upgrade pip
     ```
 
-### ✅ Step 4: Install dbt
+## ✅ Step 4: Install dbt
 
 Now, install dbt Core along with the PostgreSQL adapter within your virtual environment.
 
@@ -85,7 +82,7 @@ Now, install dbt Core along with the PostgreSQL adapter within your virtual envi
       - postgres: x.x.x
     ```
 
-### ✅ Step 5: Set Up a Test dbt Project
+## ✅ Step 5: Set Up a Test dbt Project
 
 Let's create a basic dbt project to start with.
 
@@ -96,7 +93,7 @@ Let's create a basic dbt project to start with.
 2.  Follow the interactive prompts, making sure to **select `postgres` as your database adapter** when asked.
     This command generates a standard dbt project structure, including the `models/` directory, `dbt_project.yml` configuration file, and other essential components.
 
-### ✅ Step 6: Save `requirements.txt` (WSL Version)
+## ✅ Step 6: Save `requirements.txt` (WSL Version)
 
 After successfully installing dbt and its adapter, capture all the installed Python packages into a `requirements.txt` file. This is crucial for replicating your environment.
 
@@ -113,7 +110,7 @@ After successfully installing dbt and its adapter, capture all the installed Pyt
     # ... other dependencies
     ```
 
-### ✅ Step 7: Connect to PostgreSQL from WSL
+## ✅ Step 7: Connect to PostgreSQL from WSL
 
 Finally, configure dbt to connect to your PostgreSQL database.
 
@@ -127,7 +124,7 @@ Finally, configure dbt to connect to your PostgreSQL database.
     ```
     This can simplify networking between dbt and PostgreSQL within the WSL environment.
 
-### Check dbt Connection
+## Check dbt Connection
 
 To ensure dbt can communicate with your database, run the debug command:
 
