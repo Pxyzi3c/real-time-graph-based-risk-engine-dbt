@@ -1,5 +1,5 @@
-# real-time-graph-based-risk-engine-dbt
-dbt repository for https://github.com/Pxyzi3c/real-time-graph-based-risk-engine
+> [!NOTE]
+> This is a ```dbt``` repository for [Real-time Graph-based Risk Engine](https://github.com/Pxyzi3c/real-time-graph-based-risk-engine).
 # Setting Up dbt with WSL2 for Data Analytics
 
 ## Why WSL for dbt and Not Native Windows?
