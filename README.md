@@ -12,31 +12,24 @@ _Use ``wsl`` command line_
 
 ## ✅ Step 1: Enable and Install WSL2
 
-First, ensure WSL2 is enabled and installed on your Windows machine.
-
-1.  Open **PowerShell as an Administrator**.
-2.  Run the following command:
+1.  Open **PowerShell as an Administrator** and run.
     ```powershell
     wsl --install
     ```
-    This command installs WSL2 and sets up Ubuntu as its default Linux distribution.
-3.  **Reboot your computer** when prompted to finalize the installation.
-4.  After rebooting, open the **Ubuntu application** from your Start menu to complete the initial setup of your Linux environment.
+    This installs WSL2 with Ubuntu by default.
+2.  **Reboot** when prompted.
+3.  After reboot, open Ubuntu from Start menu.
 
 ## ✅ Step 2: Set Up Python in WSL
 
 Next, we'll install Python and its package manager within your Ubuntu WSL instance.
 
-1.  Open your **Ubuntu terminal** (from the Start menu).
-2.  Update your package lists and upgrade existing packages:
+1.  Inside **Ubuntu terminal** (from the Start menu).
     ```bash
     sudo apt update && sudo apt upgrade -y
-    ```
-3.  Install Python 3, pip (Python package installer), and venv (for virtual environments):
-    ```bash
     sudo apt install python3 python3-pip python3-venv -y
     ```
-4.  Verify the installed Python versions:
+2.  Check Python versions:
     ```bash
     python3 --version
     pip3 --version
@@ -46,11 +39,10 @@ Next, we'll install Python and its package manager within your Ubuntu WSL instan
 
 It's best practice to use a virtual environment to manage dbt's dependencies, keeping them isolated from your system-wide Python installation.
 
-1.  Navigate to your dbt project directory within WSL. To access your Windows drives, they are mounted under `/mnt/`. For example:
+1.  Navigate to your dbt project directory in WSL.
     ```bash
     cd /mnt/c/Users/<YourUsername>/path-to-project
     ```
-    *Replace `<YourUsername>` and `path-to-project` with your actual Windows username and project path.*
 2.  Create and activate your virtual environment:
     ```bash
     python3 -m venv venv
@@ -63,9 +55,7 @@ It's best practice to use a virtual environment to manage dbt's dependencies, ke
 
 ## ✅ Step 4: Install dbt
 
-Now, install dbt Core along with the PostgreSQL adapter within your virtual environment.
-
-1.  Install `dbt-core` and `dbt-postgres`:
+1.  Install `dbt-core` and `dbt-postgres` adapter:
     ```bash
     pip install dbt-core dbt-postgres
     ```
@@ -73,7 +63,7 @@ Now, install dbt Core along with the PostgreSQL adapter within your virtual envi
     ```bash
     dbt --version
     ```
-    You should see output similar to this, confirming both `dbt-core` and the `postgres` plugin are installed:
+    Expected output:
     ```
     Core:
       - installed: x.x.x
@@ -90,25 +80,23 @@ Let's create a basic dbt project to start with.
     ```bash
     dbt init risk_engine_dbt
     ```
-2.  Follow the interactive prompts, making sure to **select `postgres` as your database adapter** when asked.
-    This command generates a standard dbt project structure, including the `models/` directory, `dbt_project.yml` configuration file, and other essential components.
+2.  Follow the prompts and select Postgres as your adapter.
+3.  This generates a standard dbt project structure with `models/`, `dbt_project.yml` configuration file, etc.
 
 ## ✅ Step 6: Save `requirements.txt` (WSL Version)
 
-After successfully installing dbt and its adapter, capture all the installed Python packages into a `requirements.txt` file. This is crucial for replicating your environment.
-
-1.  With your virtual environment still active, run:
-    ```bash
-    pip freeze > requirements.txt
-    ```
-    A sample `requirements.txt` output might look like this:
-    ```
-    dbt-core==1.7.8
-    dbt-postgres==1.7.8
-    Jinja2==3.1.2
-    psycopg2-binary==2.9.9
-    # ... other dependencies
-    ```
+After successful install:
+```bash
+pip freeze > requirements.txt
+```
+Sample output:
+```
+dbt-core==1.7.8
+dbt-postgres==1.7.8
+Jinja2==3.1.2
+psycopg2-binary==2.9.9
+# ... other dependencies
+```
 
 ## ✅ Step 7: Connect to PostgreSQL from WSL
 
