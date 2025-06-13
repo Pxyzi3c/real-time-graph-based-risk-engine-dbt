@@ -2,8 +2,6 @@
 dbt repository for https://github.com/Pxyzi3c/real-time-graph-based-risk-engine
 # Setting Up dbt with WSL2 for Data Analytics
 
----
-
 ## Why WSL for dbt and Not Native Windows?
 
 Leveraging **Windows Subsystem for Linux (WSL)** for dbt development offers significant advantages over a native Windows installation:
@@ -12,8 +10,6 @@ Leveraging **Windows Subsystem for Linux (WSL)** for dbt development offers sign
 * **Lightweight and Efficient:** WSL provides a complete Linux environment without the overhead and complexity of containerization solutions like Docker.
 * **Production Alignment:** This setup mirrors typical FAANG (Facebook, Amazon, Apple, Netflix, Google) and other enterprise environments that often prioritize Linux-first production deployments.
 * **Seamless CLI Experience:** You'll work directly within a familiar Linux command line, which is ideal for dbt's powerful CLI tools.
-
----
 
 ## Installation Guide: Setting Up dbt in WSL2
 
@@ -139,3 +135,9 @@ To ensure dbt can communicate with your database, run the debug command:
 
 ```bash
 dbt debug
+```
+
+If everything is configured correctly and your dbt project is set up, you can run your dbt models:
+
+```bash
+dbt run
