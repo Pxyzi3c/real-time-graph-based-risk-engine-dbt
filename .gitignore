@@ -35,7 +35,7 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
+logs/
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -119,6 +119,7 @@ ipython_config.py
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
+dbt_packages/
 
 # Celery stuff
 celerybeat-schedule
