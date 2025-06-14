@@ -129,3 +129,42 @@ If everything is configured correctly and your dbt project is set up, you can ru
 
 ```bash
 dbt run
+```
+
+## WSL Debugging Commands
+1. Access the ```psql``` prompt:
+
+```bash
+sudo -u postgres psql
+```
+
+2. Show databases list
+
+```bash
+\l
+```
+
+3. Exit ```psql```
+
+```bash
+\q
+```
+
+4. Check database connectivity/existence
+
+```bash
+psql -h localhost -p 5432 -U postgres -d development
+```
+
+5. Check which postgreSQL service your SWL terminal is connecting to
+
+```bash
+sudo netstat -tulnp | grep 5432
+```
+
+6. Check common PostgreSQL service names in WSL/Ubuntu
+
+```bash
+sudo systemctl status postgresql
+sudo systemctl status postgresql@17-main
+```
