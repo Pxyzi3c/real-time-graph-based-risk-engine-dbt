@@ -168,3 +168,9 @@ sudo netstat -tulnp | grep 5432
 sudo systemctl status postgresql
 sudo systemctl status postgresql@17-main
 ```
+
+7. Stop a service from running inside your WSL environment
+
+```bash
+sudo systemctl stop postgresql
+```
