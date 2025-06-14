@@ -119,6 +119,11 @@ To ensure dbt can communicate with your database, run the debug command:
 ```bash
 dbt debug
 ```
+Edit ```profiles.yml``` through WSL:
+
+```bash
+nano /root/.dbt/profiles.yml
+```
 
 If everything is configured correctly and your dbt project is set up, you can run your dbt models:
 
