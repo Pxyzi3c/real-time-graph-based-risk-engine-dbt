@@ -1,6 +1,6 @@
 services:
     dbt:
-        image: ghcr.io/dbt-labs/dbt-postgres:1.9.1
+        image: ghcr.io/dbt-labs/dbt-postgres:1.9.latest
         container_name: dbt_runner_container
         environment:
             DBT_PG_HOST: postgres_db # This container_name is discoverable on the shared network
@@ -15,9 +15,8 @@ services:
             - ~/.dbt:/root/.dbt
         working_dir: /usr/app/dbt_project # Set the working directory inside the container
         networks:
-            aml_network:
-                external: true
+            - real-time-graph-based-risk-engine_aml_network
 
 networks:
-    aml_network:
+    real-time-graph-based-risk-engine_aml_network:
         external: true
