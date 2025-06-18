@@ -1,20 +1,23 @@
 services:
     dbt:
-        image: xemuliam/dbt:1.7.8-bigquery1.7.5
-        container_name: dbt_container
+        image: ghcr.io/dbt-labs/dbt-postgres:1.9.1
+        container_name: dbt_runner_container
         environment:
-            DBT_PROFILE: aml_profile
-            DBT_HOST: postgres_db # Reference to PostgreSQL service
-            DBT_USER: postgres_container_user
-            DBT_PASSWORD: postgres_container_pass
-            DBT_DBNAME: development
-            DBT_SCHEMA: public
+            DBT_PG_HOST: postgres_db # This container_name is discoverable on the shared network
+            DBT_PG_PORT: 5432
+            DBT_PG_USER: ${DBT_USER}
+            DBT_PG_PASS: ${DBT_PASSWORD} # (MUST MATCH main repo's POSTGRES_PASSWORD)
+            DBT_PG_DBNAME: ${DBT_DBNAME}
+            DBT_PG_SCHEMA: ${DBT_SCHEMA}
+            DBT_PROFILES_DIR: /root/.dbt
         volumes:
-            - ./risk_engine_dbt:/usr/app # Mount dbt models to container
-            - ~/.dbt:/root/.dbt # Ensure profiles are synced
+            - ./risk_engine_dbt:/usr/app/dbt_project
+            - ~/.dbt:/root/.dbt
+        working_dir: /usr/app/dbt_project # Set the working directory inside the container
         networks:
-            - aml_network
+            aml_network:
+                external: true
 
 networks:
     aml_network:
-        driver: bridge
+        external: true
